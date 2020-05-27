@@ -10,7 +10,8 @@ apply plugin: 'com.github.dcendents.android-maven'
 }*/
 
 // 设置Jitpack发布的Group
-group='com.gitee.yangguangzhao'
+// group='com.gitee.yangguangzhao'
+group='com.github.YangGuangz'
 /*version = '1.0.4'*/
 
 android {
