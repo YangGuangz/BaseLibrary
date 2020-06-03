@@ -2,17 +2,8 @@ apply plugin: 'com.android.library'
 // 启用Jitpack插件
 apply plugin: 'com.github.dcendents.android-maven'
 
-/*repositories {
-    mavenCentral()
-    google()
-    jcenter()
-    maven { url "https://jitpack.io" }
-}*/
-
-// 设置Jitpack发布的Group
-// group='com.gitee.yangguangzhao'
 group='com.github.YangGuangz'
-version = '1.0.1'
+version = '1.0.2'
 
 android {
     compileSdkVersion 28
@@ -37,20 +28,12 @@ android {
     lintOptions {
         abortOnError false
     }
-
-    /*sourceSets {
-        main.java.srcDirs += 'src/main/java'
-        androidTest.java.srcDirs += 'src/androidTest/java'
-        androidTest.resources.srcDirs += 'src/androidTest/res'
-    }*/
 }
 
 dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-
-    api fileTree(include: ['*.jar'], dir: 'libs')
 
     // appcompat，暂时不要更新版本，1.1.0 don't handle bug with webview in android 5.1.1
     api 'androidx.appcompat:appcompat:1.0.2'
@@ -152,29 +135,3 @@ dependencies {
     api 'cn.jiguang.sdk:jpush:3.5.6'
     api 'cn.jiguang.sdk:jcore:2.2.8'
 }
-
-/*
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.sourceFiles
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.sourceFiles
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-task classesJar(type: Jar) {
-    from "$buildDir/intermediates/classes/release"
-}
-
-artifacts {
-    archives classesJar
-    archives javadocJar
-    archives sourcesJar
-}*/
