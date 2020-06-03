@@ -160,23 +160,25 @@ public class BitmapUtils {
      * Bitmap转换成ByteArray并且进行压缩，压缩到不大于maxkb
      *
      * @param bitmap
-     * @param maxkb
+     * @param maxkbSize
      * @return
      */
-    public static byte[] bitmap2Bytes(Bitmap bitmap, long maxkb) {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, output);
-        int options = 100;
-        while (output.toByteArray().length > maxkb * 1024 && options != 10) {
+    public static byte[] bmpToByteArray(Bitmap bitmap, int maxkbSize) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        LogUtils.d("原始Bitmap大小 = " + baos.toByteArray().length / 1024 + "kb");
+        int options = 90;
+        while (baos.toByteArray().length > maxkbSize * 1024 && options != 10) {
             // 清空output
-            output.reset();
+            baos.reset();
             // 这里压缩options%，把压缩后的数据存放到output中
-            bitmap.compress(Bitmap.CompressFormat.PNG, options, output);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, options, baos);
             options -= 10;
         }
         // 回收bitmap
-        recycle(bitmap);
-        byte[] result = output.toByteArray();
+        bitmap.recycle();
+        byte[] result = baos.toByteArray();
+        LogUtils.d("压缩后Bitmap大小 = " + result.length / 1024 + "kb");
         /**
          * ByteArrayOutputStream或ByteArrayInputStream是内存读写流，
          * 不同于指向硬盘的流，它内部是使用字节数组读内存的，
@@ -185,7 +187,7 @@ public class BitmapUtils {
          */
         try {
             // 关闭baos
-            output.close();
+            baos.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

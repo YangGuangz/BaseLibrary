@@ -116,24 +116,34 @@ public class FileUtils {
     }
 
     /**
-     * 在应用缓存文件夹下生成一个jpg格式的图片文件。
+     * 在应用缓存文件夹下生成一个jpg格式的临时图片文件。
      *
      * @param context 上下文
      * @return 图片路径
      */
     public static File createImageFile(Context context) {
+        // 根据时间标记创建图片文件名称
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINA).format(new Date());
+        String imageFileName = "JPEG_" + timeStamp + "_";
+        return createImageFile(context, imageFileName);
+    }
+
+    /**
+     * 在应用缓存文件夹下生成一个jpg格式的临时图片文件。
+     *
+     * @param context 上下文
+     * @return 图片路径
+     */
+    public static File createImageFile(Context context, String fileName) {
         File image = null;
         // 获取图片保存的文件夹
         File storageDir = getCacheDirectory(context, Environment.DIRECTORY_PICTURES);
         if (storageDir != null) {
             if (storageDir.exists() || storageDir.mkdirs()) {
                 // 文件夹不为空并且文件夹存在，或者文件夹不存在但是创建成功
-                // 根据时间标记创建图片文件名称
-                String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.CHINA).format(new Date());
-                String imageFileName = "JPEG_" + timeStamp + "_";
                 // 使用给定的前缀和后缀字符串在指定的目录中创建一个新的空文件。
                 try {
-                    image = File.createTempFile(imageFileName, ".jpg", storageDir);
+                    image = File.createTempFile(fileName, ".jpg", storageDir);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -211,21 +221,33 @@ public class FileUtils {
      */
     public static void cleanExternalCache(Context context) {
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            deleteFilesByDirectory(context.getExternalCacheDir());
+            deleteFile(context.getExternalCacheDir());
         }
     }
 
     /**
-     * 删除文件夹，这里只会删除某个文件夹下的文件，如果传入的directory是个文件，将不做处理
+     * 删除文件
      *
-     * @param directory 文件夹
+     * @param file
+     * @return
      */
-    private static void deleteFilesByDirectory(File directory) {
-        if (directory != null && directory.exists() && directory.isDirectory()) {
-            for (File item : directory.listFiles()) {
-                item.delete();
+    public static boolean deleteFile(File file) {
+        if (file == null || !file.exists()) {
+            return false;
+        }
+        if (file.isDirectory()) {
+            File[] files = file.listFiles();
+            if (files != null) {
+                for (File f : files) {
+                    if (f.isDirectory()) {
+                        deleteFile(f);
+                    } else {
+                        f.delete();
+                    }
+                }
             }
         }
+        return file.delete();
     }
 
     /**

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_status_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:layout_height="20dp" />
+<!-- 全局的透明状态栏时的状态栏占位View -->

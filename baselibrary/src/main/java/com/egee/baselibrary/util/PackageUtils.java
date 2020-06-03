@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.egee.baselibrary.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,8 @@ import java.util.List;
  * @Version:
  */
 public class PackageUtils {
+
+    public static final String PACKAGE_NAME_WX = "com.tencent.mm";
 
     /**
      * 获取包名
@@ -129,6 +133,21 @@ public class PackageUtils {
             }
         }
         return false;
+    }
+
+    /**
+     * 判断微信是否安装，未安装吐司提示
+     *
+     * @param context
+     * @return
+     */
+    public static boolean isWxInstalled(Context context) {
+        if (isPackageInstalledByGetInfo(context, PACKAGE_NAME_WX)) {
+            return true;
+        } else {
+            ToastUtil.showToast(context, R.string.wechat_not_installed);
+            return false;
+        }
     }
 
 }
