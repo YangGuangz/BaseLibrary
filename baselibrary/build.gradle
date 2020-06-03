@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group='com.github.YangGuangz'
-version = '1.0.2'
+version = '1.0.3'
 
 android {
     compileSdkVersion 28
@@ -28,12 +28,15 @@ android {
     lintOptions {
         abortOnError false
     }
+
 }
 
 dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    api fileTree(include: ['*.jar'], dir: 'libs')
 
     // appcompat，暂时不要更新版本，1.1.0 don't handle bug with webview in android 5.1.1
     api 'androidx.appcompat:appcompat:1.0.2'
