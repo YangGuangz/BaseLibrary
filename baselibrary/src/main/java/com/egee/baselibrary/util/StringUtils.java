@@ -333,4 +333,18 @@ public class StringUtils {
         return mobile.replace(mobile.substring(2, 5), "****");
     }
 
+    /**
+     * 超过多少位后显示省略号,忽略中英文区分
+     *
+     * @param nickName 昵称
+     * @param maxLen   最大字符数
+     * @return
+     */
+    public static CharSequence moreCountEllipsizeToIgnoreCase(String nickName, int maxLen) {
+        if (!TextUtils.isEmpty(nickName) && nickName.length() > maxLen) {
+            return nickName.substring(0, maxLen) + "...";
+        }
+        return nickName;
+    }
+
 }

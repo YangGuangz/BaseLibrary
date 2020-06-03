@@ -12,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:indeterminateBehavior="repeat"
-        android:indeterminateOnly="true" />
+        android:indeterminateOnly="true"
+        android:indeterminateTint="@color/white" />
 
     <TextView
         android:id="@+id/tv_loading"

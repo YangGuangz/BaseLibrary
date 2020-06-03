@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 应用主色调 -->
-    <color name="colorPrimary">@color/color_a71cff</color>
-    <!-- 应用主要暗色调 -->
-    <color name="colorPrimaryDark">@color/black</color>
-    <!-- 控件选中颜色 -->
-    <color name="colorAccent">@color/color_a71cff</color>
-
     <!-- 白色 -->
     <color name="white">#FFFFFF</color>
     <!-- 黑色 -->

@@ -73,6 +73,15 @@ public class LogUtils {
     }
 
     /**
+     * INFO级别
+     *
+     * @param msg
+     */
+    public static void i(String tag, String msg) {
+        Logger.t(tag).i(msg);
+    }
+
+    /**
      * WARN级别
      *
      * @param msg
@@ -127,5 +136,4 @@ public class LogUtils {
     public static void json(String json) {
         Logger.json(json);
     }
-
 }

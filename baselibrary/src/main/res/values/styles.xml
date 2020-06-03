@@ -1,11 +1,5 @@
 <resources>
 
-    <!-- 底部弹出的Dialog或者PopupWindow的show和dismiss动画 -->
-    <style name="animation_style_dialog_bottom" parent="@android:style/Animation">
-        <item name="android:windowEnterAnimation">@anim/anim_bottom_to_top</item>
-        <item name="android:windowExitAnimation">@anim/anim_top_to_bottom</item>
-    </style>
-
     <!-- LoadingDialog样式 -->
     <style name="dialog_style_loading" parent="Theme.AppCompat.Dialog">
         <item name="android:windowNoTitle">true</item>
@@ -14,14 +8,10 @@
         <item name="android:windowBackground">@android:color/transparent</item>
     </style>
 
-    <!-- CustomDialog样式 -->
-    <style name="dialog_style_custom" parent="android:style/Theme.Dialog">
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowIsFloating">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">true</item>
+    <!-- 底部弹出的Dialog或者PopupWindow的show和dismiss动画 -->
+    <style name="animation_style_dialog_bottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_bottom_to_top</item>
+        <item name="android:windowExitAnimation">@anim/anim_top_to_bottom</item>
     </style>
 
     <!-- 底部弹出的Dialog样式 -->
@@ -32,6 +22,16 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- CustomDialog样式 -->
+    <style name="dialog_style_custom" parent="android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
     </style>
 
