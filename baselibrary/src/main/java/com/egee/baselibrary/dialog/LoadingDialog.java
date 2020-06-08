@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.egee.baselibrary.R;
@@ -18,12 +19,18 @@ import com.egee.baselibrary.R;
  */
 public class LoadingDialog extends ProgressDialog {
 
+    private static int mThemeResId;
+
     private View mDialogView;
     private TextView mTvMessage;
     private boolean canceledOnTouchOutside;
 
+    public static void init(int themeResId) {
+        mThemeResId = themeResId;
+    }
+
     public LoadingDialog(LoadingDialog.Builder builder) {
-        super(builder.mContext);
+        super(builder.mContext, mThemeResId);
         mDialogView = builder.mDialogView;
         mTvMessage = builder.mTvMessage;
         canceledOnTouchOutside = builder.canceledOnTouchOutside;

@@ -268,7 +268,6 @@ public abstract class BaseActivity extends SupportActivity implements IBaseActiv
         if (!isDestroyed()) {
             if (mLoadingDialog == null) {
                 mLoadingDialog = new LoadingDialog.Builder(this)
-                        .setTheme(R.style.dialog_style_loading)
                         .build();
             }
             if (!mLoadingDialog.isShowing()) {
