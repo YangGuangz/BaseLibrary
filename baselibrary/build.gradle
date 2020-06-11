@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'com.github.YangGuangz'
-version = '1.0.5'
+version = '1.0.7'
 
 android {
     compileSdkVersion 28
@@ -36,6 +36,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    // open_sdk_r6140_lite.jar-QQ
     api fileTree(include: ['*.jar'], dir: 'libs')
 
     // appcompat，暂时不要更新版本，1.1.0 don't handle bug with webview in android 5.1.1
@@ -85,16 +86,17 @@ dependencies {
     // Banner
     api 'com.youth.banner:banner:1.4.10'
 
-    // RecyclerView适配器 不要升级，会有getMultiTypeDelegate报错问题
+    // RecyclerView适配器，不要升级，会有getMultiTypeDelegate报错问题
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47-androidx'
 
+    // 下拉刷新上拉加载
     api 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-x'
     api 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-x'
 
     // 微信（包含统计功能）
     api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 
-    // 2020/2/17 1.1.2->1.2.0
+    // 屏幕适配
     api 'me.jessyan:autosize:1.2.0'
 
     // 日志
@@ -103,15 +105,17 @@ dependencies {
     // 运行时权限
     api 'com.github.tbruyelle:rxpermissions:0.10.2'
 
+    // 图表
     api 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
     // 友盟
     api 'com.umeng.umsdk:analytics:8.0.0'
     api 'com.umeng.umsdk:common:2.0.0'
 
+    // 日历
     api 'com.haibin:calendarview:3.6.7'
 
-    // 2020/4/15 3.1.2->3.1.3
+    // 版本更新
     api 'com.github.yjfnypeu:UpdatePlugin:3.1.3'
 
     // --------------------------------以下依赖项目需要单独依赖-----------------------------------
