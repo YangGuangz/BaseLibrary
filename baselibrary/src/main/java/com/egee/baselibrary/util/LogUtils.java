@@ -35,6 +35,10 @@ public class LogUtils {
         Logger.v(msg);
     }
 
+    public static void v(String tag, String msg) {
+        Logger.t(tag).v(msg);
+    }
+
     /**
      * DEBUG级别，打印对象
      *
@@ -42,6 +46,10 @@ public class LogUtils {
      */
     public static void d(Object obj) {
         Logger.d(obj);
+    }
+
+    public static void d(String tag, Object obj) {
+        Logger.t(tag).d(obj);
     }
 
     /**
@@ -90,6 +98,10 @@ public class LogUtils {
         Logger.w(msg);
     }
 
+    public static void w(String tag, String msg) {
+        Logger.t(tag).w(msg);
+    }
+
 
     /**
      * ERROR级别
@@ -98,6 +110,10 @@ public class LogUtils {
      */
     public static void e(String msg) {
         Logger.e(msg);
+    }
+
+    public static void e(String tag, String msg) {
+        Logger.t(tag).e(msg);
     }
 
     /**
@@ -110,6 +126,10 @@ public class LogUtils {
         Logger.e(throwable, msg);
     }
 
+    public static void e(String tag, Throwable throwable, String msg) {
+        Logger.t(tag).e(throwable, msg);
+    }
+
     /**
      * ASSERT级别
      *
@@ -117,6 +137,10 @@ public class LogUtils {
      */
     public static void a(String msg) {
         Logger.wtf(msg);
+    }
+
+    public static void a(String tag, String msg) {
+        Logger.t(tag).wtf(msg);
     }
 
     /**
@@ -128,6 +152,10 @@ public class LogUtils {
         Logger.xml(xml);
     }
 
+    public static void xml(String tag, String xml) {
+        Logger.t(tag).xml(xml);
+    }
+
     /**
      * 打印json
      *
@@ -136,4 +164,9 @@ public class LogUtils {
     public static void json(String json) {
         Logger.json(json);
     }
+
+    public static void json(String tag, String json) {
+        Logger.t(tag).json(json);
+    }
+
 }
