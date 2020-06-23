@@ -1,13 +1,5 @@
 <resources>
 
-    <!-- LoadingDialog样式 -->
-    <style name="dialog_style_loading" parent="Theme.AppCompat.Dialog">
-        <item name="android:windowNoTitle">true</item>
-        <!-- 是否对话框背景变暗 -->
-        <item name="android:backgroundDimEnabled">false</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-    </style>
-
     <!-- 底部弹出的Dialog或者PopupWindow的show和dismiss动画 -->
     <style name="animation_style_dialog_bottom" parent="@android:style/Animation">
         <item name="android:windowEnterAnimation">@anim/anim_bottom_to_top</item>
