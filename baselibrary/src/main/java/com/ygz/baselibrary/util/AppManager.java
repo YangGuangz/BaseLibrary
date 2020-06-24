@@ -113,8 +113,9 @@ public class AppManager {
      */
     public static String getRunningActivityName(Context context) {
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        if (activityManager == null)
+        if (activityManager == null) {
             return null;
+        }
         return activityManager.getRunningTasks(1).get(0).topActivity.getClassName();
     }
 

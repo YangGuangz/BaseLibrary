@@ -18,27 +18,31 @@ public class SpUtils {
     private static SharedPreferences mSp;
 
     public static void saveLong(Context context, String key, long value) {
-        if (mSp == null)
+        if (mSp == null) {
             mSp = context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+        }
         mSp.edit().putLong(key, value).commit();
     }
 
     public static long getLong(Context context, String key, long value) {
-        if (mSp == null)
+        if (mSp == null) {
             mSp = context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+        }
         return mSp.getLong(key, value);
     }
 
 
     public static void saveBoolean(Context context, String key, boolean value) {
-        if (mSp == null)
+        if (mSp == null) {
             mSp = context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+        }
         mSp.edit().putBoolean(key, value).commit();
     }
 
     public static boolean getBoolean(Context context, String key, boolean defValue) {
-        if (mSp == null)
+        if (mSp == null) {
             mSp = context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+        }
         return mSp.getBoolean(key, defValue);
     }
 
@@ -61,26 +65,30 @@ public class SpUtils {
     }
 
     public static String getString(Context context, String key, String defValue) {
-        if (mSp == null)
+        if (mSp == null) {
             mSp = context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+        }
         return mSp.getString(key, defValue);
     }
 
     public static void saveInt(Context context, String key, int value) {
-        if (mSp == null)
+        if (mSp == null) {
             mSp = context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+        }
         mSp.edit().putInt(key, value).commit();
     }
 
     public static int getInt(Context context, String key, int defValue) {
-        if (mSp == null)
+        if (mSp == null) {
             mSp = context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+        }
         return mSp.getInt(key, defValue);
     }
 
     public static void clear(Context context) {
-        if (mSp == null)
+        if (mSp == null) {
             mSp = context.getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE);
+        }
         mSp.edit().clear().commit();
     }
 

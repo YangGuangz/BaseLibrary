@@ -13,7 +13,7 @@ import java.io.File;
 /**
  * @Date: 2020/5/7 15:05
  * @Author: YGZ
- * @Description:
+ * @Description: 系统分享分享文本、图片到微信
  * @Version:
  */
 public class ShareUtils {

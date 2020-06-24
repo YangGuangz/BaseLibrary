@@ -71,8 +71,9 @@ public class QQUtils {
      * 授权完成后，界面会自动返回应用界面。用户在应用中进行后续操作。
      */
     private void login(BaseUiListener listener) {
-        if (qqNotInstalled())
+        if (qqNotInstalled()) {
             return;
+        }
 
         if (!mTencent.isSessionValid()) {
             // mTencent.login(this, Scope, listener);
@@ -83,8 +84,9 @@ public class QQUtils {
      * 调用QQ注销接口
      */
     private void logout() {
-        if (qqNotInstalled())
+        if (qqNotInstalled()){
             return;
+        }
 
         mTencent.logout(mContext);
     }
@@ -100,8 +102,9 @@ public class QQUtils {
      * @param appName   手Q客户端顶部，替换“返回”按钮文字，如果为空，用返回代替
      */
     public void shareWebpageToQQ(Activity activity, String targetUrl, String title, String summary, String imageUrl, String appName) {
-        if (qqNotInstalled())
+        if (qqNotInstalled()){
             return;
+        }
 
         final Bundle params = new Bundle();
         // 分享的类型，图文分享（普通分享）填Tencent.SHARE_TO_QQ_TYPE_DEFAULT
@@ -130,8 +133,9 @@ public class QQUtils {
      * @param appName       手Q客户端顶部，替换“返回”按钮文字，如果为空，用返回代替
      */
     public void shareImageToQQ(Activity activity, String imageLocalUrl, String appName) {
-        if (qqNotInstalled())
+        if (qqNotInstalled()){
             return;
+        }
 
         final Bundle params = new Bundle();
         // 分享的类型，纯图片分享填Tencent.SHARE_TO_QQ_TYPE_IMAGE

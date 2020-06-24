@@ -108,7 +108,9 @@ public class ViewUtils {
      * @return view宽高数组
      */
     public static int[] getWidthAndHeight(Activity activity, View view) {
-        if (activity == null || view == null) return new int[]{0, 0};
+        if (activity == null || view == null) {
+            return new int[]{0, 0};
+        }
         measureWidthAndHeight(view);
         int w = view.getMeasuredWidth();
         int h = view.getMeasuredHeight();

@@ -23,8 +23,9 @@ public class TimeUtils {
      * @return
      */
     public static String getFormatText(Date dateToFormat) {
-        if (dateToFormat == null)
+        if (dateToFormat == null) {
             return null;
+        }
         long diff = new Date().getTime() - dateToFormat.getTime();
         long r;
         if (diff > year) {

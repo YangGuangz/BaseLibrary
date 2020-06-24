@@ -100,9 +100,10 @@ public class BitmapUtils {
         // 计算图片的缩放值
         // 选择宽和高中最小的比率作为inSampleSize的值，这样可以保证最终图片的宽和高一定都会大于等于目标的宽和高
         // Determine how much to scale down the image
-        if (photoW > targetW || photoH > targetH)
+        if (photoW > targetW || photoH > targetH) {
             // 图片原始宽高 至少有一个大于 目标宽高，缩放值为 原始宽/目标宽、原始高/目标高 中的最小值
             scaleFactor = Math.min(Math.round((float) photoW / (float) targetW), Math.round((float) photoH / (float) targetH));
+        }
 
         return scaleFactor;
     }
@@ -149,8 +150,9 @@ public class BitmapUtils {
      */
     public static void recycle(Bitmap bitmap) {
         try {
-            if (bitmap != null && !bitmap.isRecycled())
+            if (bitmap != null && !bitmap.isRecycled()) {
                 bitmap.recycle();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

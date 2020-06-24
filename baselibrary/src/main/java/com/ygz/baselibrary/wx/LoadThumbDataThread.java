@@ -70,13 +70,15 @@ public class LoadThumbDataThread extends Thread {
                 thumbData = BitmapUtils.bmpToByteArray(bmp, 32);
             }
             // 回调加载缩略图结果
-            if (mListener != null)
+            if (mListener != null) {
                 mListener.onLoadThumbData(thumbData);
+            }
         } catch (IOException e) {
             e.printStackTrace();
             // 回调加载缩略图结果
-            if (mListener != null)
+            if (mListener != null) {
                 mListener.onLoadThumbData(null);
+            }
         } finally {
             // 关闭HttpURLConnection
             if (conn != null) {

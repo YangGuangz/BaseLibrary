@@ -99,7 +99,9 @@ public class ScreenUtils {
      * @return 状态栏高度
      */
     private static int getStatusBarHeightByReflect(Context context) {
-        if (context == null) return 0;
+        if (context == null) {
+            return 0;
+        }
         try {
             Class<?> clazz = Class.forName("com.android.internal.R$dimen");
             Object object = clazz.newInstance();
@@ -118,7 +120,9 @@ public class ScreenUtils {
      * @return 屏幕截图Bitmap
      */
     public static Bitmap getScreenShot(Activity activity) {
-        if (activity == null) return null;
+        if (activity == null) {
+            return null;
+        }
         View view = activity.getWindow().getDecorView();
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache();
@@ -137,7 +141,9 @@ public class ScreenUtils {
      * @return 屏幕截图Bitmap
      */
     public static Bitmap getScreenShotWithoutStatusBar(Activity activity) {
-        if (activity == null) return null;
+        if (activity == null) {
+            return null;
+        }
         View view = activity.getWindow().getDecorView();
         view.setDrawingCacheEnabled(true);
         view.buildDrawingCache();

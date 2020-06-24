@@ -57,8 +57,9 @@ public abstract class BaseWebViewActivity<P extends BasePresenter, M extends IBa
      */
     private void fixWebViewLeak() {
         try {
-            if (mWebView == null)
+            if (mWebView == null) {
                 return;
+            }
             // 在销毁WebView之前需要先将WebView从父容器中移除，然后再销毁WebView
             ViewGroup parent = (ViewGroup) mWebView.getParent();
             if (parent != null) {
@@ -85,8 +86,9 @@ public abstract class BaseWebViewActivity<P extends BasePresenter, M extends IBa
 
     private void initWebView() {
         mWebView = getWebView();
-        if (mWebView == null)
+        if (mWebView == null) {
             return;
+        }
 
         WebSettings settings = mWebView.getSettings();
         settings.setDefaultTextEncodingName("utf-8");
