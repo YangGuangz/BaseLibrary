@@ -52,19 +52,19 @@ public class EventBusUtils {
     /**
      * 发布订阅事件
      *
-     * @param Publisher 发布者
+     * @param publisher 发布者
      */
-    public static void post(Object Publisher) {
-        EventBus.getDefault().post(Publisher);
+    public static void post(Object publisher) {
+        EventBus.getDefault().post(publisher);
     }
 
     /**
      * 发布粘性订阅事件
      *
-     * @param Publisher 发布者
+     * @param publisher 发布者
      */
-    public static void postSticky(Object Publisher) {
-        EventBus.getDefault().postSticky(Publisher);
+    public static void postSticky(Object publisher) {
+        EventBus.getDefault().postSticky(publisher);
     }
 
     /**

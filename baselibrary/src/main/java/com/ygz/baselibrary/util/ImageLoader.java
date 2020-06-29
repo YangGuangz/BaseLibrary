@@ -6,6 +6,8 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
@@ -27,12 +29,26 @@ public class ImageLoader {
      * @param imageView
      */
     public static void load(Context context, Object model, ImageView imageView) {
-        DrawableCrossFadeFactory drawableCrossFadeFactory = new DrawableCrossFadeFactory.Builder(300)
-                .setCrossFadeEnabled(true)
-                .build();
         Glide.with(context)
                 .load(model)
-                .transition(DrawableTransitionOptions.with(drawableCrossFadeFactory))
+                .transition(DrawableTransitionOptions.with(getDrawableCrossFadeFactory()))
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .into(imageView);
+    }
+
+    /**
+     * 使用Glide加载图片，指定加载监听
+     *
+     * @param context
+     * @param model
+     * @param listener  加载监听
+     * @param imageView
+     */
+    public static void load(Context context, Object model, RequestListener<Drawable> listener, ImageView imageView) {
+        Glide.with(context)
+                .load(model)
+                .listener(listener)
+                .transition(DrawableTransitionOptions.with(getDrawableCrossFadeFactory()))
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(imageView);
     }
@@ -46,13 +62,10 @@ public class ImageLoader {
      * @param imageView
      */
     public static void load(Context context, Object model, int placeholderResId, ImageView imageView) {
-        DrawableCrossFadeFactory drawableCrossFadeFactory = new DrawableCrossFadeFactory.Builder(300)
-                .setCrossFadeEnabled(true)
-                .build();
         Glide.with(context)
                 .load(model)
                 .placeholder(placeholderResId)
-                .transition(DrawableTransitionOptions.with(drawableCrossFadeFactory))
+                .transition(DrawableTransitionOptions.with(getDrawableCrossFadeFactory()))
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(imageView);
     }
@@ -67,16 +80,24 @@ public class ImageLoader {
      * @param imageView
      */
     public static void load(Context context, Object model, int placeholderResId, int errorResId, ImageView imageView) {
-        DrawableCrossFadeFactory drawableCrossFadeFactory = new DrawableCrossFadeFactory.Builder(300)
-                .setCrossFadeEnabled(true)
-                .build();
         Glide.with(context)
                 .load(model)
                 .placeholder(placeholderResId)
                 .error(errorResId)
-                .transition(DrawableTransitionOptions.with(drawableCrossFadeFactory))
+                .transition(DrawableTransitionOptions.with(getDrawableCrossFadeFactory()))
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(imageView);
+    }
+
+    /**
+     * 使用Glide加载图片，裁剪为圆形，缓存策略为不缓存
+     *
+     * @param context
+     * @param model
+     * @param imageView
+     */
+    public static void loadCircle(Context context, Object model, ImageView imageView) {
+        loadCircle(context, model, DiskCacheStrategy.NONE, imageView);
     }
 
     /**
@@ -84,56 +105,45 @@ public class ImageLoader {
      *
      * @param context
      * @param model
+     * @param diskCacheStrategy 缓存策略
      * @param imageView
      */
-    public static void loadCircle(Context context, Object model, ImageView imageView) {
-        DrawableCrossFadeFactory drawableCrossFadeFactory = new DrawableCrossFadeFactory.Builder(300)
-                .setCrossFadeEnabled(true)
-                .build();
+    public static void loadCircle(Context context, Object model, DiskCacheStrategy diskCacheStrategy, ImageView imageView) {
         Glide.with(context)
                 .load(model)
-                .apply(RequestOptions.circleCropTransform())
-                .transition(DrawableTransitionOptions.with(drawableCrossFadeFactory))
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                .apply(RequestOptions.bitmapTransform(new CircleCrop()))
+                .transition(DrawableTransitionOptions.with(getDrawableCrossFadeFactory()))
+                .diskCacheStrategy(diskCacheStrategy)
                 .into(imageView);
     }
 
     /**
-     * 加载圆形头像
+     * 使用Glide加载图片，裁剪为圆角
      *
      * @param context
      * @param model
+     * @param roundingRadius 圆角角度
      * @param imageView
      */
-    public static void loadCircleHead(Context context, Object model, ImageView imageView) {
-        DrawableCrossFadeFactory drawableCrossFadeFactory = new DrawableCrossFadeFactory.Builder(300)
-                .setCrossFadeEnabled(true)
-                .build();
+    public static void loadRound(Context context, Object model, int roundingRadius, ImageView imageView) {
         Glide.with(context)
                 .load(model)
-                .apply(RequestOptions.circleCropTransform())
-                .transition(DrawableTransitionOptions.with(drawableCrossFadeFactory))
-                .into(imageView);
-    }
-
-    /**
-     * 使用Glide加载图片，指定加载监听
-     *
-     * @param context
-     * @param model
-     * @param imageView
-     * @param listener  加载监听
-     */
-    public static void load(Context context, Object model, ImageView imageView, RequestListener<Drawable> listener) {
-        DrawableCrossFadeFactory drawableCrossFadeFactory = new DrawableCrossFadeFactory.Builder(300)
-                .setCrossFadeEnabled(true)
-                .build();
-        Glide.with(context)
-                .load(model)
-                .listener(listener)
-                .transition(DrawableTransitionOptions.with(drawableCrossFadeFactory))
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(roundingRadius)))
+                .transition(DrawableTransitionOptions.with(getDrawableCrossFadeFactory()))
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(imageView);
+    }
+
+    /**
+     * 获取DrawableCrossFadeFactory
+     *
+     * @return DrawableCrossFadeFactory
+     */
+    public static DrawableCrossFadeFactory getDrawableCrossFadeFactory() {
+        DrawableCrossFadeFactory drawableCrossFadeFactory = new DrawableCrossFadeFactory.Builder(300)
+                .setCrossFadeEnabled(true)
+                .build();
+        return drawableCrossFadeFactory;
     }
 
 }

@@ -1,6 +1,8 @@
 package com.ygz.baselibrary.util;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -83,6 +85,7 @@ public class DeviceUtils {
      *
      * @return 手机IMEI
      */
+    @SuppressLint("MissingPermission")
     public static String getIMEI(Context context) {
         String imei = SpUtils.getString(context, "imei");
         if (StringUtils.isEmpty(imei)) {
@@ -112,12 +115,12 @@ public class DeviceUtils {
      * @return 唯一标识符
      */
     public static String getUid(Context context) {
-        // 通过 SharedPreferences 获取 GUID
+        // 通过 SharedPreferences 获取 UID
         String uid = SpUtils.getString(context, "uid");
         if (StringUtils.notEmpty(uid)) {
             return uid;
         }
-        if (Build.VERSION.SDK_INT >= 29) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             // 10.0及以上
             String androidId = Settings.System.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
             if (StringUtils.notEmpty(androidId)) {
