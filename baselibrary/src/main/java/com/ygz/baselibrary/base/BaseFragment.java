@@ -27,7 +27,7 @@ import me.yokeyword.fragmentation.SupportFragment;
  */
 public abstract class BaseFragment extends SupportFragment implements IBaseFragment {
 
-    protected Activity mActivity;
+    protected Activity mContext;
     protected String TAG;
     protected View mFragmentView;
     private Unbinder mUnbinder;
@@ -42,7 +42,7 @@ public abstract class BaseFragment extends SupportFragment implements IBaseFragm
     @Override
     public void onAttach(@NotNull Context context) {
         super.onAttach(context);
-        mActivity = getActivity();
+        mContext = getActivity();
     }
 
     /**
