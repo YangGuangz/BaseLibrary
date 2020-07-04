@@ -2,6 +2,7 @@ package com.ygz.baselibrary.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -119,8 +120,9 @@ public final class DateUtils {
 
     /**
      * 两个时间戳是否是同一天 时间戳是long型的（11或者13）
+     *
      * @param currentTime 当前时间
-     * @param lastTime 最后保存时间
+     * @param lastTime    最后保存时间
      * @return
      */
     public static boolean isSameData(String currentTime, String lastTime) {
@@ -152,6 +154,52 @@ public final class DateUtils {
         } else {
             return false;
         }
+    }
+
+    /**
+     * 获取过去或者未来 任意天内的日期数组
+     *
+     * @param intervals intervals天内
+     * @return 日期数组
+     */
+    public static ArrayList<String> test(int intervals) {
+        ArrayList<String> pastDaysList = new ArrayList<>();
+        ArrayList<String> fetureDaysList = new ArrayList<>();
+        for (int i = 0; i < intervals; i++) {
+            pastDaysList.add(getPastDate(i));
+            fetureDaysList.add(getFetureDate(i));
+        }
+        return pastDaysList;
+    }
+
+    /**
+     * 获取过去第几天的日期
+     *
+     * @param past
+     * @return
+     */
+    public static String getPastDate(int past) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) - past);
+        Date today = calendar.getTime();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String result = format.format(today);
+        return result;
+    }
+
+    /**
+     * 获取未来第几天的日期
+     *
+     * @param feture
+     * @return
+     */
+    public static String getFetureDate(int feture) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_YEAR, calendar.get(Calendar.DAY_OF_YEAR) + feture);
+        Date today = calendar.getTime();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String result = format.format(today);
+        return result;
     }
 
 }
