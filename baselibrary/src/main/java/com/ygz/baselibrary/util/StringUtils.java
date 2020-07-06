@@ -1,5 +1,7 @@
 package com.ygz.baselibrary.util;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.text.TextUtils;
 
 /**
@@ -345,6 +347,26 @@ public class StringUtils {
             return nickName.substring(0, maxLen) + "...";
         }
         return nickName;
+    }
+
+    /**
+     * get text by string res id
+     *
+     * @param context
+     * @param resId
+     * @return
+     */
+    public static String getTextByResId(Context context, int resId) {
+        String str = "";
+        try {
+            str = context.getApplicationContext()
+                    .getResources()
+                    .getText(resId)
+                    .toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
     }
 
 }
