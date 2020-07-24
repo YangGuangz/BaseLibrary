@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">@color/color_5842FF</color>
-    
     <!-- 白色 -->
     <color name="white">#FFFFFF</color>
     <!-- 黑色 -->
@@ -14,6 +12,7 @@
     <color name="semitransparentblack">#e0000000</color>
     <!-- 半透明白 -->
     <color name="semitransparentwhite">#80FFFFFF</color>
+    <color name="alpha_80_black">#CC000000</color>
 
     <!-- 通用分割线颜色 -->
     <color name="color_divider_bg">@color/color_eeeeee</color>

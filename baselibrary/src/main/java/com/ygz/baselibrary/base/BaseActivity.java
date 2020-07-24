@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.ygz.baselibrary.R;
-import com.ygz.baselibrary.dialog.LoadingDialog;
+import com.ygz.baselibrary.widget.loading.LoadingDialog;
 import com.ygz.baselibrary.update.CustomUpdateStrategy;
 import com.ygz.baselibrary.update.DefaultDownloadNotifier;
 import com.ygz.baselibrary.update.DefaultFileCreator;
@@ -43,7 +43,7 @@ public abstract class BaseActivity extends SupportActivity implements IBaseActiv
 
     protected Activity mContext;
     protected LoadingDialog mLoadingDialog;
-    private Unbinder mUnbinder;
+    // private Unbinder mUnbinder;
     // 打开的Activity数量统计
     private int mActivityStartCount = 0;
     // 分页加载当前页数，默认第一页
@@ -68,7 +68,7 @@ public abstract class BaseActivity extends SupportActivity implements IBaseActiv
             setContentView(getLayoutResID());
             // setContentView(getLayoutResID());
             // 绑定ButterKnife
-            mUnbinder = ButterKnife.bind(this);
+            // mUnbinder = ButterKnife.bind(this);
             // 初始化布局
             initView();
         }
@@ -129,9 +129,9 @@ public abstract class BaseActivity extends SupportActivity implements IBaseActiv
     protected void onDestroy() {
         super.onDestroy();
         // 解绑ButterKnife
-        if (mUnbinder != null) {
+        /*if (mUnbinder != null) {
             mUnbinder.unbind();
-        }
+        }*/
         // 解决华为手机内存泄漏
         FixMemLeak.fixLeak(this);
         // 隐藏LoadingDialog
@@ -265,12 +265,12 @@ public abstract class BaseActivity extends SupportActivity implements IBaseActiv
      */
     @Override
     public void showLoadingDialog(CharSequence text) {
-        if (!isDestroyed()) {
+        if (!isFinishing()) {
             if (mLoadingDialog == null) {
-                mLoadingDialog = new LoadingDialog.Builder(this)
-                        .build();
+                mLoadingDialog = new LoadingDialog(this);
             }
             if (!mLoadingDialog.isShowing()) {
+                // 这里不要判空，否则在LoadingDialog实例重复使用时，设置完带有文本的加载框后，文本便会一直存在，无法置空
                 mLoadingDialog.setMessage(text);
                 mLoadingDialog.show();
             }
@@ -285,6 +285,7 @@ public abstract class BaseActivity extends SupportActivity implements IBaseActiv
         if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
             mLoadingDialog.dismiss();
         }
+        mLoadingDialog = null;
     }
 
     @Override

@@ -8,13 +8,13 @@ import android.text.TextUtils;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
-import com.ygz.baselibrary.zxing.BarcodeFormat;
-import com.ygz.baselibrary.zxing.BitMatrix;
-import com.ygz.baselibrary.zxing.CharacterSetECI;
-import com.ygz.baselibrary.zxing.EncodeHintType;
-import com.ygz.baselibrary.zxing.ErrorCorrectionLevel;
-import com.ygz.baselibrary.zxing.QRCodeWriter;
-import com.ygz.baselibrary.zxing.WriterException;
+import com.ygz.baselibrary.util.zxing.BarcodeFormat;
+import com.ygz.baselibrary.util.zxing.BitMatrix;
+import com.ygz.baselibrary.util.zxing.CharacterSetECI;
+import com.ygz.baselibrary.util.zxing.EncodeHintType;
+import com.ygz.baselibrary.util.zxing.ErrorCorrectionLevel;
+import com.ygz.baselibrary.util.zxing.QRCodeWriter;
+import com.ygz.baselibrary.util.zxing.WriterException;
 
 import java.util.Hashtable;
 
