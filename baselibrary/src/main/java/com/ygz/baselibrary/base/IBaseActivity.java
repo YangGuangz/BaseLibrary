@@ -56,6 +56,4 @@ public interface IBaseActivity extends IBaseView {
 
     void startActivityForResult(@NonNull Class clazz, Bundle bundle, int requestCode);
 
-    boolean isShowFloating();
-
 }

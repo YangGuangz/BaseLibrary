@@ -454,9 +454,4 @@ public abstract class BaseActivity extends SupportActivity implements IBaseActiv
                     .check();
         }
     }
-
-    @Override
-    public boolean isShowFloating() {
-        return false;
-    }
 }

@@ -11,8 +11,6 @@ import android.widget.PopupWindow;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.umeng.analytics.MobclickAgent;
-
 import org.jetbrains.annotations.NotNull;
 
 import butterknife.ButterKnife;
@@ -97,15 +95,17 @@ public abstract class BaseFragment extends SupportFragment implements IBaseFragm
     @Override
     public void onResume() {
         super.onResume();
+        // 取消此处友盟统计代码，依赖项目中需要统计可以增加一层单独继承
         // Umeng页面统计
-        MobclickAgent.onPageStart(getClass().getSimpleName());
+        // MobclickAgent.onPageStart(getClass().getSimpleName());
     }
 
     @Override
     public void onPause() {
         super.onPause();
+        // 取消此处友盟统计代码，依赖项目中需要统计可以增加一层单独继承
         // Umeng页面统计
-        MobclickAgent.onPageEnd(getClass().getSimpleName());
+        // MobclickAgent.onPageEnd(getClass().getSimpleName());
     }
 
     @Override
